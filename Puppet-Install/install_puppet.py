@@ -135,7 +135,7 @@ if internet_on:
     forget_pkg('com.puppetlabs.puppet')
 
     print "Downloading Hiera"
-    the_dmg = downloadChunks("http://downloads.puppetlabs.com/mac/hiera-1.3.4.dmg")
+    the_dmg = downloadChunks("https://downloads.puppetlabs.com/mac/hiera-latest.dmg")
     print "Mounting Hiera DMG"
     the_command = "/usr/bin/hdiutil attach "+the_dmg
     p=subprocess.Popen(the_command,shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
@@ -148,7 +148,7 @@ if internet_on:
     p.wait()
     time.sleep(20)
     print "Downloading Facter"
-    the_dmg = downloadChunks("http://downloads.puppetlabs.com/mac/facter-2.2.0.dmg")
+    the_dmg = downloadChunks("https://downloads.puppetlabs.com/mac/facter-latest.dmg")
     print "Mounting Facter DMG"
     the_command = "/usr/bin/hdiutil attach "+the_dmg
     p=subprocess.Popen(the_command,shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
@@ -156,12 +156,12 @@ if internet_on:
     time.sleep(10)
     #install it
     print "Installing Facter"
-    the_command = "/usr/sbin/installer -pkg /Volumes/facter-2.2.0/facter-2.2.0.pkg -target /"
+    the_command = "/usr/sbin/installer -pkg /Volumes/facter-2.4.6/facter-2.4.6.pkg -target /"
     p=subprocess.Popen(the_command,shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
     p.wait()
     time.sleep(20)
     print "Downloading Puppet"
-    the_dmg = downloadChunks("http://downloads.puppetlabs.com/mac/puppet-3.7.1.dmg")
+    the_dmg = downloadChunks("https://downloads.puppetlabs.com/mac/puppet-latest.dmg")
     ##mount the dmg
     print "Mounting Puppet DMG"
     the_command = "/usr/bin/hdiutil attach "+the_dmg
@@ -169,16 +169,16 @@ if internet_on:
     p.wait()
     time.sleep(10)
     print "Installing Puppet"
-    the_command = "/usr/sbin/installer -pkg /Volumes/puppet-3.7.1/puppet-3.7.1.pkg -target /"
+    the_command = "/usr/sbin/installer -pkg /Volumes/puppet-3.8.7/puppet-3.8.7.pkg -target /"
     p=subprocess.Popen(the_command,shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
     p.wait()
     time.sleep(20)
     print "Ejecting Puppet"
-    the_command = "hdiutil eject /Volumes/puppet-3.7.1"
+    the_command = "hdiutil eject /Volumes/puppet-3.8.7"
     subprocess.Popen(the_command,shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE).communicate()[0]
 
     print "Ejecting Facter"
-    the_command = "hdiutil eject /Volumes/facter-2.2.0"
+    the_command = "hdiutil eject /Volumes/facter-2.4.6"
     subprocess.Popen(the_command,shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE).communicate()[0]
 
     print "Ejecting Hiera"
