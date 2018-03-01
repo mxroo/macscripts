@@ -21,7 +21,7 @@ args = vars(parser.parse_args())
 if args['server']:
     puppetserver = args['server']
 else:
-    puppetserver = 'puppet.grahamgilbert.dev'
+    puppetserver = 'puppet.palantetech.coop'
 def downloadChunks(url):
     """Helper to download large files
         the only arg is a url
@@ -85,7 +85,7 @@ if internet_on:
     if args['certname']:
         certname = args['certname']
     else:
-        certname = 'client.grahamgilbert.dev'
+        certname = 'client.palantetech'
 
     if args['serial']:
         the_command = "ioreg -c \"IOPlatformExpertDevice\" | awk -F '\"' '/IOPlatformSerialNumber/ {print $4}'"
@@ -109,7 +109,7 @@ if internet_on:
 
     if args['appendhosts']:
         with open("/etc/hosts", "a") as myfile:
-            myfile.write("192.168.33.10 puppet.grahamgilbert.dev")
+            myfile.write("23.92.21.90 puppet.palantetech.coop")
 
     import platform
     v, _, _ = platform.mac_ver()
